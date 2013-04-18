@@ -1,0 +1,117 @@
+" toogle's vim configuration file.
+
+" General settings.
+set nocompatible
+set hidden	" allow edit buffers to be hidden
+set number	" show line numbers
+set nowrap	" no line wrapping
+set showcmd	" show (partial) command in status line
+set showmatch	" show matching brackets
+set confirm	" ask for confirmation before saving or exiting
+
+set wildignore=*.o,*.obj,*.pyc,*.bak
+
+set fileencodings=utf-8,cp1251,cp866,koi8-r,default
+
+set statusline=%F%m%r%h%w%=%(%c%V\ %l/%L\ %P%)
+set laststatus=2
+
+
+" Search settings.
+set incsearch	" incremental search
+set ignorecase	" ignore case of letters while searching
+set smartcase	" do smart case matching
+set hlsearch	" highlight matches
+
+
+syntax on
+
+filetype plugin indent on
+set smartindent
+set backspace=indent,eol,start
+
+
+set keymap=russian-jcukenwin
+set iminsert=0
+set imsearch=0
+
+set spelllang=en_us,ru_yo
+
+
+" Vundle settings.
+set runtimepath+=~/.vim/bundle/vundle/
+execute vundle#rc()
+
+Bundle 'gmarik/vundle'
+Bundle 'scrooloose/nerdtree'
+Bundle 'majutsushi/tagbar'
+Bundle 'msanders/snipmate.vim'
+Bundle 'Raimondi/delimitMate'
+Bundle 'ervandew/supertab'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-repeat'
+Bundle 'jmcantrell/vim-virtualenv'
+Bundle 'scrooloose/syntastic'
+Bundle 'nanotech/jellybeans.vim'
+Bundle 'altercation/vim-colors-solarized'
+
+
+" Mappings.
+nnoremap ; :
+
+" Jump to the next row even with line wrapping enabled.
+nnoremap j gj
+nnoremap k gk
+
+" Reselect visual block after indent/outdent.
+vnoremap < <gv
+vnoremap > >gv
+vnoremap = =gv
+
+" Toggle folds with Space.
+nnoremap <silent> <Space> :exe 'silent! normal! za'.(foldlevel('.') ? '' : 'l')<CR>
+
+" Disable search highlighting on double Esc.
+nnoremap <silent> <Esc><Esc> :nohlsearch<CR>
+
+" Easy window navigation.
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+nmap <F5> :NERDTree<CR>
+nmap <F6> :TagbarToggle<CR>
+
+
+if has('gui_running')
+  set guifont=Monofur\ 11
+  set background=dark
+  colorscheme jellybeans
+
+  " Use Ctrl-s for saving, also in Insert mode.
+  noremap <C-s>   :update<CR>
+  vnoremap <C-s>  <C-c>:update<CR>
+  inoremap <C-s>  <C-o>:update<CR>
+
+  " Use Ctrl-q for quit, also in Insert mode.
+  noremap <C-q>   :qall<CR>
+  vnoremap <C-q>  <C-c>:qall<CR>
+  inoremap <C-q>  <C-o>:qall<CR>
+
+  " Common clipboard operations.
+  vnoremap <S-Del>     "+x   " Shift-Del is Cut
+  vnoremap <C-Insert>  "+y   " Ctrl-Insert is Copy
+  map <S-Insert>       "+gP  " Shift-Insert is Paste
+  cmap <S-Insert>      <C-r>+
+  exe 'inoremap <script> <S-Insert>' paste#paste_cmd['i']
+  exe 'vnoremap <script> <S-Insert>' paste#paste_cmd['v']
+else
+  colorscheme desert
+endif
+
+
+" Tagbar settings.
+let g:tagbar_sort=0
+let g:tagbar_compact=1

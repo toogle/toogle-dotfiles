@@ -1,0 +1,203 @@
+#
+# toogle's .zshrc file for zsh 4.3
+#
+
+#
+# General options
+#
+unlimit			# use hard limits
+limit stack 8192	# except for a smaller stack
+limit core 0		# and no core dumps
+limit -s
+
+umask 022
+
+# Shell options
+setopt   notify globdots correct pushdtohome cdablevars autolist
+setopt   correctall autocd recexact longlistjobs
+setopt   autoresume pushdsilent noclobber
+setopt   autopushd pushdminus extendedglob rcquotes
+unsetopt bgnice autoparamslash equals
+
+# Shell functions
+setenv() { typeset -x "${1}${1:+=}${(@)argv[2,$#]}" }	# csh compatibility
+freload() { while (( $# )); do; unfunction $1; autoload -U $1; shift; done }
+
+# Autoload all shell functions from all directories in $fpath
+for func in $^fpath/*(N-.x:t); autoload $func
+
+# Autoload zsh modules when they are referenced
+zmodload -a zsh/stat stat
+zmodload -a zsh/zpty zpty
+zmodload -a zsh/zprof zprof
+zmodload -ap zsh/mapfile mapfile
+
+eval $(dircolors)
+
+#
+# Aliases
+#
+alias ls='ls -F --group-directories-first --color=auto'
+alias ll='ls -lh'
+alias rr='rm -rf'
+alias grep='egrep --color=auto'
+alias j='jobs'
+alias h='history'
+alias hd='hexdump -C'
+alias nc='ncat'
+alias whois='jwhois'
+alias screen='screen -DR'
+alias tree='find . -type d | sed -e "s/[^-][^\/]*\//  |/g" -e "s/|\([^ ]\)/|-\1/"'
+
+# Avoid correcting and globbing on special commands
+for cmd in mv cp mkdir; alias $cmd="nocorrect $cmd"
+for cmd in alias expr find; alias $cmd="noglob $cmd"
+
+# Global aliases
+alias -g L='| less'
+alias -g H='| head'
+alias -g T='| tail'
+alias -g G='| grep'
+
+# Suffix aliases
+alias -s c=vim
+alias -s cpp=vim
+alias -s h=vim
+alias -s tex=vim
+
+#
+# Environment variables
+#
+# Load environment settings from profile.env, which is created by
+# env-update from the files in /etc/env.d
+if [ -e /etc/profile.env ] ; then
+	source /etc/profile.env
+fi
+
+export PAGER=$(which less)
+export EDITOR=$(which vim)
+#export BROWSER=$(which opera)
+export LESS="-ieMR"
+export HELPDIR="/usr/local/lib/zsh/help"	# directory for run-help function to find docs
+
+# Mail checking
+if [ -d ~/Maildir ] ; then
+	export MAIL="~/Maildir"
+	MAILCHECK=300
+	setopt mailwarning
+fi
+
+# Set path variables
+path=(/bin /sbin /usr/bin /usr/sbin /usr/local/bin /usr/local/sbin /opt/bin)
+if [ -d ~/bin ] ; then
+	path=($path ~/bin)
+fi
+
+#eval $(gcc-config -E)
+
+manpath=(/usr/local/share/man /usr/share/man)
+
+#cdpath=(.. ~)	# search path for the cd command
+
+# Automatically remove duplicates from these arrays
+typeset -U path manpath cdpath
+
+export PATH
+export MANPATH
+
+# Set prompts
+autoload -U colors && colors
+
+if [ ! $MC_SID ] ; then
+	if [ $EUID -ne 0 ] ; then
+		PROMPT="%{${fg[green]}%}%n@%m %{${fg_bold[blue]}%}%~ %#%{$reset_color%} "
+	else
+		PROMPT="%{${fg_bold[red]}%}%n@%m %{${fg_bold[blue]}%}%~ %#%{$reset_color%} "
+	fi
+	RPROMPT=" %(?,%{${fg_bold[green]}%}:%)%{$reset_color%},%{${fg_bold[red]}%}:(%{$reset_color%}"
+else
+	PROMPT="%n@%m %# "
+	# No RPROMPT for Midnight Commander
+fi
+
+PROMPT2="%{${fg_bold[blue]}%}>%{$reset_color%} "
+
+#
+# History options
+#
+HISTFILE=~/.zhistory
+SAVEHIST=5000
+HISTSIZE=5000
+DIRSTACKSIZE=20
+
+setopt APPEND_HISTORY
+setopt HIST_IGNORE_ALL_DUPS HIST_IGNORE_SPACE HIST_REDUCE_BLANKS
+
+#
+# Key bindings
+#
+bindkey -v	# vi key bindings
+#bindkey -e	# emacs key bindings
+#bindkey -d	# default key bindings
+
+bindkey '^[[2~'	yank
+bindkey '^[[3~'	delete-char
+bindkey '^[[H'	beginning-of-line
+bindkey '^[[1~'	beginning-of-line
+bindkey '^[[F'	end-of-line
+bindkey '^[[4~'	end-of-line
+bindkey '^[[5~'	up-line-or-history
+bindkey '^[[6~'	down-line-or-history
+bindkey '^[[A'	up-line-or-search
+bindkey '^[[B'	down-line-or-search
+bindkey ' '	magic-space		# also do history expansion on space
+bindkey '^I'	complete-word		# complete on tab, leave expansion to _expand
+bindkey '^R'	history-incremental-search-backward
+
+#
+# Completion options
+#
+autoload -U compinit && compinit
+
+# List of completers to use
+zstyle ':completion:*::::' completer _expand _complete _ignored _approximate
+
+# Colorize files completion
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+
+# Allow one error for every three characters typed in approximate completer
+zstyle -e ':completion:*:approximate:*' max-errors 'reply=( $(( ($#PREFIX+$#SUFFIX)/3 )) numeric )'
+    
+# Insert all expansions for expand completer
+zstyle ':completion:*:expand:*' tag-order all-expansions
+
+# Formatting and messages
+zstyle ':completion:*' verbose yes
+zstyle ':completion:*:descriptions' format '%B%d%b'
+zstyle ':completion:*:messages' format '%d'
+zstyle ':completion:*:warnings' format 'No matches for: %d'
+zstyle ':completion:*:corrections' format '%B%d (errors: %e)%b'
+zstyle ':completion:*' group-name ''
+
+# Match uppercase from lowercase
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+# Offer indexes before parameters in subscripts
+zstyle ':completion:*:*:-subscript-:*' tag-order indexes parameters
+
+# Command for process lists
+zstyle ':completion:*:processes' command 'ps o pid,user,command'
+
+# Host completion
+hosts=(localhost $(hostname))
+
+zstyle '*' hosts $hosts
+
+# Filename suffixes to ignore during completion (except after rm command)
+zstyle ':completion:*:*:(^rm):*:*files' ignored-patterns '*?~' '*?.o' '*?.pyc'
+
+# Ignore completion functions (until the _ignored completer)
+zstyle ':completion:*:functions' ignored-patterns '_*'
+
+# Enable cache for the completions
+zstyle ':completion::complete:*' use-cache 1

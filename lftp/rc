@@ -1,0 +1,11 @@
+set ftp:client		"FlashFXP"
+set ftp:anon-pass	"flashfxp@"
+set ftp:nop-interval	30
+set ftp:charset		"CP1251"
+set ftp:timezone	"Europe/Moscow"
+
+set http:user-agent	"Opera/10.10"
+
+set dns:order		"inet"
+
+set cmd:ls-default	"-a"
