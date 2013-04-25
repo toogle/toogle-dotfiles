@@ -1,0 +1,14 @@
+defutf8 on
+defflow on
+altscreen on
+crlf off
+autodetach on
+startup_message off
+
+defscrollback 10000
+
+vbell off
+defmonitor on
+
+hardstatus off
+caption always ' %{-b dd}%-w%{rd}%n* %t%{-}%+w %{dd}%-= %c %d/%m/%Y%{-} '
