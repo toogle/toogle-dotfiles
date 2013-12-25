@@ -1,117 +1,180 @@
-" toogle's vim configuration file.
+" toogle's configuration for Vim
 
-" General settings.
+"
+" General settings
+"
 set nocompatible
-set hidden	" allow edit buffers to be hidden
-set number	" show line numbers
-set nowrap	" no line wrapping
-set showcmd	" show (partial) command in status line
-set showmatch	" show matching brackets
-set confirm	" ask for confirmation before saving or exiting
+set hidden       " allow edit buffers to be hidden
+set number       " show line numbers
+set nowrap       " no line wrapping
+set showmatch    " show matching brackets
+set showcmd      " show (partial) command in status line
+set confirm      " ask for confirmation before saving or exiting
 
 set wildignore=*.o,*.obj,*.pyc,*.bak
-
 set fileencodings=utf-8,cp1251,cp866,koi8-r,default
+set spelllang=en_us,ru_yo
 
+" Search
+set incsearch   " incremental search
+set ignorecase  " ignore case of letters while searching
+set smartcase   " do smart case matching
+set hlsearch    " highlight matches
+
+" Display unprintable characters
+set listchars=tab:▸\ ,trail:·,nbsp:~,precedes:«,extends:»
+set list
+
+" Status line
 set statusline=%F%m%r%h%w%=%(%c%V\ %l/%L\ %P%)
 set laststatus=2
 
 
-" Search settings.
-set incsearch	" incremental search
-set ignorecase	" ignore case of letters while searching
-set smartcase	" do smart case matching
-set hlsearch	" highlight matches
+"
+" Vundle
+"
+filetype off  " required for correct filetype detection in bundles
 
-
-syntax on
-
-filetype plugin indent on
-set smartindent
-set backspace=indent,eol,start
-
-
-set keymap=russian-jcukenwin
-set iminsert=0
-set imsearch=0
-
-set spelllang=en_us,ru_yo
-
-
-" Vundle settings.
 set runtimepath+=~/.vim/bundle/vundle/
 execute vundle#rc()
 
 Bundle 'gmarik/vundle'
 Bundle 'scrooloose/nerdtree'
 Bundle 'majutsushi/tagbar'
+Bundle 'maxbrunsfeld/vim-yankstack'
+Bundle 'Yggdroot/indentLine'
 Bundle 'msanders/snipmate.vim'
 Bundle 'Raimondi/delimitMate'
-Bundle 'ervandew/supertab'
-Bundle 'tpope/vim-fugitive'
+Bundle 'jondkinney/dragvisuals.vim'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-fugitive'
+Bundle 'mhinz/vim-signify'
 Bundle 'jmcantrell/vim-virtualenv'
 Bundle 'scrooloose/syntastic'
+Bundle 'othree/html5.vim'
+Bundle 'pangloss/vim-javascript'
+Bundle 'groenewege/vim-less'
+Bundle 'digitaltoad/vim-jade'
+Bundle 'plasticboy/vim-markdown'
 Bundle 'nanotech/jellybeans.vim'
-Bundle 'altercation/vim-colors-solarized'
+
+filetype plugin indent on
+syntax on
 
 
-" Mappings.
-nnoremap ; :
+"
+" Keyboard mappings
+"
+set keymap=russian-jcukenwin
+set iminsert=0
+set imsearch=0
 
-" Jump to the next row even with line wrapping enabled.
-nnoremap j gj
-nnoremap k gk
+set backspace=indent,eol,start
 
-" Reselect visual block after indent/outdent.
-vnoremap < <gv
-vnoremap > >gv
-vnoremap = =gv
+nnoremap  ;  :
 
-" Toggle folds with Space.
-nnoremap <silent> <Space> :exe 'silent! normal! za'.(foldlevel('.') ? '' : 'l')<CR>
+" Jump to the next row even with line wrapping enabled
+nnoremap  j  gj
+vnoremap  j  gj
+nnoremap  k  gk
+vnoremap  k  gk
 
-" Disable search highlighting on double Esc.
-nnoremap <silent> <Esc><Esc> :nohlsearch<CR>
+" Toggle folds with Space
+nnoremap  <silent>  <Space>  :exec 'silent! normal! za'.(foldlevel('.') ? '' : 'l')<CR>
 
-" Easy window navigation.
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
+" Disable search highlighting on double Esc
+nnoremap  <silent>  <Esc><Esc>  :nohlsearch<CR>
 
-nmap <F5> :NERDTree<CR>
-nmap <F6> :TagbarToggle<CR>
+" Easy window navigation
+map  <C-h>  <C-w>h
+map  <C-j>  <C-w>j
+map  <C-k>  <C-w>k
+map  <C-l>  <C-w>l
+
+" Toggle line numbers mode
+nnoremap  <F4>  :exec &nu==&rnu ? "set nu!" : "set rnu!"<CR>
+
+nnoremap  <F5>  :NERDTree<CR>
+nnoremap  <F6>  :TagbarToggle<CR>
+
+nnoremap  <leader>gs  :Gstatus<CR>
 
 
+"
+" GUI and terminal settings
+"
 if has('gui_running')
-  set guifont=Monofur\ 11
+  set guifont=Consolas\ 10
   set background=dark
   colorscheme jellybeans
 
-  " Use Ctrl-s for saving, also in Insert mode.
-  noremap <C-s>   :update<CR>
-  vnoremap <C-s>  <C-c>:update<CR>
-  inoremap <C-s>  <C-o>:update<CR>
+  " Use Ctrl-s for saving, also in Insert mode
+  noremap   <C-s>  :update<CR>
+  vnoremap  <C-s>  <C-c>:update<CR>
+  inoremap  <C-s>  <C-o>:update<CR>
 
-  " Use Ctrl-q for quit, also in Insert mode.
-  noremap <C-q>   :qall<CR>
-  vnoremap <C-q>  <C-c>:qall<CR>
-  inoremap <C-q>  <C-o>:qall<CR>
+  " Use Ctrl-q for quit, also in Insert mode
+  noremap   <C-q>  :qall<CR>
+  vnoremap  <C-q>  <C-c>:qall<CR>
+  inoremap  <C-q>  <C-o>:qall<CR>
 
-  " Common clipboard operations.
-  vnoremap <S-Del>     "+x   " Shift-Del is Cut
-  vnoremap <C-Insert>  "+y   " Ctrl-Insert is Copy
-  map <S-Insert>       "+gP  " Shift-Insert is Paste
-  cmap <S-Insert>      <C-r>+
-  exe 'inoremap <script> <S-Insert>' paste#paste_cmd['i']
-  exe 'vnoremap <script> <S-Insert>' paste#paste_cmd['v']
+  " Common clipboard operations
+  vnoremap  <S-Del>     "+x   " Shift-Del is Cut
+  vnoremap  <C-Insert>  "+y   " Ctrl-Insert is Copy
+  map       <S-Insert>  "+gP  " Shift-Insert is Paste
+  cmap      <S-Insert>  <C-r>+
+  exec "inoremap  <script>  <S-Insert>" paste#paste_cmd['i']
+  exec "vnoremap  <script>  <S-Insert>" paste#paste_cmd['v']
 else
   colorscheme desert
 endif
 
 
-" Tagbar settings.
-let g:tagbar_sort=0
-let g:tagbar_compact=1
+" Tagbar
+let g:tagbar_sort = 0
+let g:tagbar_compact = 1
+
+" yankstack.vim
+nmap <C-p> <Plug>yankstack_substitute_older_paste
+nmap <C-n> <Plug>yankstack_substitute_newer_paste
+
+" dragvisuals.vim
+vmap  <expr>  <Left>   DVB_Drag('left')
+vmap  <expr>  <Right>  DVB_Drag('right')
+vmap  <expr>  <Down>   DVB_Drag('down')
+vmap  <expr>  <Up>     DVB_Drag('up')
+vmap  <expr>  D        DVB_Duplicate()
+
+let g:DVB_TrimWS = 1
+
+
+"
+" Swap buffers between windows
+" http://stackoverflow.com/questions/2586984/how-can-i-swap-positions-of-two-open-files-in-splits-in-vim
+"
+function! MarkWindowSwap()
+  let g:markedWinNum = winnr()
+endfunction
+
+function! DoWindowSwap()
+  " Mark destination
+  let curNum = winnr()
+  let curBuf = bufnr("%")
+  exec g:markedWinNum . "wincmd w"
+
+  " Switch to source and shuffle dest->source
+  let markedBuf = bufnr("%")
+
+  " Hide and open so that we aren't prompted and keep history
+  exec 'hide buf' curBuf
+
+  " Switch to dest and shuffle source->dest
+  exec curNum . "wincmd w"
+
+  " Hide and open so that we aren't prompted and keep history
+  exec 'hide buf' markedBuf
+endfunction
+
+noremap  <silent>  <leader>wm  :call MarkWindowSwap()<CR>
+noremap  <silent>  <leader>ws  :call DoWindowSwap()<CR>
