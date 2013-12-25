@@ -14,10 +14,8 @@ ci    = commit
 br    = branch
 co    = checkout
 di    = diff
-egrep = !git --no-pager grep -E --color=auto
-slog  = log --stat
-glog  = log --graph
-plog  = !git --no-pager log --pretty=format:'%h %Cblue%cn %Creset%cr %Cgreen%s'
+plog  = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+egrep = grep -E --color=auto
 
 [color]
 diff   = auto
