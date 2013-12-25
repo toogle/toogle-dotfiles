@@ -63,6 +63,7 @@ alias -g G='| grep'
 alias -s c=vim
 alias -s cpp=vim
 alias -s h=vim
+alias -s js=vim
 alias -s tex=vim
 
 #
