@@ -141,18 +141,20 @@ bindkey -v	# vi key bindings
 #bindkey -e	# emacs key bindings
 #bindkey -d	# default key bindings
 
-bindkey '^[[2~'	yank
-bindkey '^[[3~'	delete-char
+bindkey '^[[2~'	yank			# Insert key
+bindkey '^[[3~'	delete-char		# Delete key
+bindkey '^[[1~'	beginning-of-line	# Home key
 bindkey '^[[H'	beginning-of-line
-bindkey '^[[1~'	beginning-of-line
+bindkey '^[[4~'	end-of-line		# End key
 bindkey '^[[F'	end-of-line
-bindkey '^[[4~'	end-of-line
-bindkey '^[[5~'	up-line-or-history
-bindkey '^[[6~'	down-line-or-history
-bindkey '^[[A'	up-line-or-search
-bindkey '^[[B'	down-line-or-search
-bindkey ' '	magic-space		# also do history expansion on space
-bindkey '^I'	complete-word		# complete on tab, leave expansion to _expand
+bindkey '^[[5~'	up-line-or-history	# Page Up key
+bindkey '^P'	up-line-or-history
+bindkey '^[[6~'	down-line-or-history	# Page Down key
+bindkey '^N'	down-line-or-history
+bindkey '^[[A'	up-line-or-search	# Arrow Up key
+bindkey '^[[B'	down-line-or-search	# Arrow Down key
+bindkey ' '	magic-space
+bindkey '^I'	complete-word
 bindkey '^R'	history-incremental-search-backward
 
 #
