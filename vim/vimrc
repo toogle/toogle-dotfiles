@@ -40,6 +40,7 @@ execute vundle#rc()
 
 Bundle 'gmarik/vundle'
 Bundle 'scrooloose/nerdtree'
+Bundle 'jlanzarotta/bufexplorer'
 Bundle 'majutsushi/tagbar'
 Bundle 'maxbrunsfeld/vim-yankstack'
 Bundle 'Yggdroot/indentLine'
@@ -98,6 +99,8 @@ nnoremap  <F4>  :exec &nu==&rnu ? "set nu!" : "set rnu!"<CR>
 nnoremap  <F5>  :NERDTree<CR>
 nnoremap  <F6>  :TagbarToggle<CR>
 nnoremap  <F7>  :IndentLinesToggle<CR>
+nnoremap  <F8>  :SyntasticToggleMode<CR>
+nnoremap  <F9>  :SignifyToggle<CR>
 
 nnoremap  <leader>gs  :Gstatus<CR>
 
