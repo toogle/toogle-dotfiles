@@ -1,38 +1,44 @@
 #
-# toogle's .zshrc file for zsh 4.3
+# The Z shell configuration file
 #
 
 #
 # General options
 #
-unlimit			# use hard limits
-limit stack 8192	# except for a smaller stack
-limit core 0		# and no core dumps
+unlimit           # use hard limits
+limit stack 8192  # except for a smaller stack
+limit coredump 0  # and no core dumps
 limit -s
 
-umask 022
+# Changing Directories
+setopt AUTO_CD AUTO_PUSHD CDABLE_VARS PUSHD_MINUS PUSHD_SILENT PUSHD_TO_HOME
 
-# Shell options
-setopt   notify globdots correct pushdtohome cdablevars autolist
-setopt   correctall autocd recexact longlistjobs
-setopt   autoresume pushdsilent noclobber
-setopt   autopushd pushdminus extendedglob rcquotes
-unsetopt bgnice autoparamslash equals
+# Completion
+setopt AUTO_LIST NO_AUTO_PARAM_SLASH REC_EXACT
+
+# Expansion and Globbing
+setopt GLOB_DOTS NO_EXTENDED_GLOB NO_EQUALS
+
+# History
+setopt APPEND_HISTORY HIST_IGNORE_ALL_DUPS HIST_IGNORE_SPACE HIST_REDUCE_BLANKS
+
+# Input/Output
+setopt CORRECT CORRECT_ALL NO_CLOBBER RC_QUOTES
+
+# Job Control
+setopt LONG_LIST_JOBS NOTIFY NO_AUTO_RESUME NO_BG_NICE
 
 # Shell functions
-setenv() { typeset -x "${1}${1:+=}${(@)argv[2,$#]}" }	# csh compatibility
+setenv() { typeset -x "${1}${1:+=}${(@)argv[2,$#]}" }  # csh compatibility
 freload() { while (( $# )); do; unfunction $1; autoload -U $1; shift; done }
 
 # Autoload all shell functions from all directories in $fpath
 for func in $^fpath/*(N-.x:t); autoload $func
 
-# Autoload zsh modules when they are referenced
+# Load zsh modules
+zmodload -a zsh/sched sched
 zmodload -a zsh/stat stat
 zmodload -a zsh/zpty zpty
-zmodload -a zsh/zprof zprof
-zmodload -ap zsh/mapfile mapfile
-
-eval $(dircolors)
 
 #
 # Aliases
@@ -45,7 +51,6 @@ alias j='jobs'
 alias h='history'
 alias hd='hexdump -C'
 alias nc='ncat'
-alias whois='jwhois'
 alias screen='screen -DR'
 alias tree='find . -type d | sed -e "s/[^-][^\/]*\//  |/g" -e "s/|\([^ ]\)/|-\1/"'
 
@@ -58,6 +63,7 @@ alias -g L='| less'
 alias -g H='| head'
 alias -g T='| tail'
 alias -g G='| grep'
+alias -g J='| python -m json.tool'
 
 # Suffix aliases
 alias -s c=vim
@@ -69,93 +75,59 @@ alias -s tex=vim
 #
 # Environment variables
 #
-# Load environment settings from profile.env, which is created by
-# env-update from the files in /etc/env.d
-if [ -e /etc/profile.env ] ; then
-	source /etc/profile.env
-fi
-
-export PAGER=$(which less)
-export EDITOR=$(which vim)
-#export BROWSER=$(which opera)
+export PAGER="less"
+export EDITOR="vim"
+#export BROWSER=""
 export LESS="-ieMR"
-export HELPDIR="/usr/local/lib/zsh/help"	# directory for run-help function to find docs
+export HELPDIR="/usr/local/lib/zsh/help"  # directory for run-help function to find docs
 
-# Mail checking
-if [ -d ~/Maildir ] ; then
-	export MAIL="~/Maildir"
-	MAILCHECK=300
-	setopt mailwarning
-fi
-
-# Set path variables
-path=(/bin /sbin /usr/bin /usr/sbin /usr/local/bin /usr/local/sbin /opt/bin)
-if [ -d ~/bin ] ; then
-	path=($path ~/bin)
-fi
-
-#eval $(gcc-config -E)
-
-manpath=(/usr/local/share/man /usr/share/man)
-
-#cdpath=(.. ~)	# search path for the cd command
-
-# Automatically remove duplicates from these arrays
-typeset -U path manpath cdpath
-
-export PATH
-export MANPATH
+# History options
+HISTFILE=~/.zhistory
+HISTSIZE=5000
+SAVEHIST=5000
 
 # Set prompts
 autoload -U colors && colors
 
 if [ ! $MC_SID ] ; then
-	if [ $EUID -ne 0 ] ; then
-		PROMPT="%{${fg[green]}%}%n@%m %{${fg_bold[blue]}%}%~ %#%{$reset_color%} "
-	else
-		PROMPT="%{${fg_bold[red]}%}%n@%m %{${fg_bold[blue]}%}%~ %#%{$reset_color%} "
-	fi
-	RPROMPT=" %(?,%{${fg_bold[green]}%}:%)%{$reset_color%},%{${fg_bold[red]}%}:(%{$reset_color%}"
+    if [ $EUID -ne 0 ] ; then
+        PROMPT="%{${fg[green]}%}%n@%m %{${fg_bold[blue]}%}%~ %#%{$reset_color%} "
+    else
+        PROMPT="%{${fg_bold[red]}%}%n@%m %{${fg_bold[blue]}%}%~ %#%{$reset_color%} "
+    fi
+    RPROMPT=" %(?,%{${fg_bold[green]}%}:%)%{$reset_color%},%{${fg_bold[red]}%}:(%{$reset_color%}"
 else
-	PROMPT="%n@%m %# "
-	# No RPROMPT for Midnight Commander
+    PROMPT="%n@%m %# "
+    # No RPROMPT for Midnight Commander
 fi
 
 PROMPT2="%{${fg_bold[blue]}%}>%{$reset_color%} "
 
-#
-# History options
-#
-HISTFILE=~/.zhistory
-SAVEHIST=5000
-HISTSIZE=5000
-DIRSTACKSIZE=20
-
-setopt APPEND_HISTORY
-setopt HIST_IGNORE_ALL_DUPS HIST_IGNORE_SPACE HIST_REDUCE_BLANKS
+# Color setup for ls
+eval $(dircolors)
 
 #
 # Key bindings
 #
-bindkey -v	# vi key bindings
-#bindkey -e	# emacs key bindings
-#bindkey -d	# default key bindings
+bindkey -v   # vi key bindings
+#bindkey -e  # emacs key bindings
+#bindkey -d  # default key bindings
 
-bindkey '^[[2~'	yank			# Insert key
-bindkey '^[[3~'	delete-char		# Delete key
-bindkey '^[[1~'	beginning-of-line	# Home key
-bindkey '^[[H'	beginning-of-line
-bindkey '^[[4~'	end-of-line		# End key
-bindkey '^[[F'	end-of-line
-bindkey '^[[5~'	up-line-or-history	# Page Up key
-bindkey '^P'	up-line-or-history
-bindkey '^[[6~'	down-line-or-history	# Page Down key
-bindkey '^N'	down-line-or-history
-bindkey '^[[A'	up-line-or-search	# Arrow Up key
-bindkey '^[[B'	down-line-or-search	# Arrow Down key
-bindkey ' '	magic-space
-bindkey '^I'	complete-word
-bindkey '^R'	history-incremental-search-backward
+bindkey '^[[2~' yank                  # Insert key
+bindkey '^[[3~' delete-char           # Delete key
+bindkey '^[[1~' beginning-of-line     # Home key
+bindkey '^[[H'  beginning-of-line
+bindkey '^[[4~' end-of-line           # End key
+bindkey '^[[F'  end-of-line
+bindkey '^[[5~' up-line-or-history    # Page Up key
+bindkey '^P'    up-line-or-history
+bindkey '^[[6~' down-line-or-history  # Page Down key
+bindkey '^N'    down-line-or-history
+bindkey '^[[A'  up-line-or-search     # Arrow Up key
+bindkey '^[[B'  down-line-or-search   # Arrow Down key
+bindkey ' '     magic-space
+bindkey '^I'    complete-word
+bindkey '^R'    history-incremental-search-backward
 
 #
 # Completion options
@@ -170,7 +142,7 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
 # Allow one error for every three characters typed in approximate completer
 zstyle -e ':completion:*:approximate:*' max-errors 'reply=( $(( ($#PREFIX+$#SUFFIX)/3 )) numeric )'
-    
+
 # Insert all expansions for expand completer
 zstyle ':completion:*:expand:*' tag-order all-expansions
 
@@ -190,11 +162,6 @@ zstyle ':completion:*:*:-subscript-:*' tag-order indexes parameters
 
 # Command for process lists
 zstyle ':completion:*:processes' command 'ps o pid,user,command'
-
-# Host completion
-hosts=(localhost $(hostname))
-
-zstyle '*' hosts $hosts
 
 # Filename suffixes to ignore during completion (except after rm command)
 zstyle ':completion:*:*:(^rm):*:*files' ignored-patterns '*?~' '*?.o' '*?.pyc'
