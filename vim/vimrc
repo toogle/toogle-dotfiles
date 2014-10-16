@@ -39,6 +39,7 @@ set runtimepath+=~/.vim/bundle/vundle/
 execute vundle#rc()
 
 Bundle 'gmarik/vundle'
+Bundle 'mhinz/vim-startify'
 Bundle 'scrooloose/nerdtree'
 Bundle 'jlanzarotta/bufexplorer'
 Bundle 'majutsushi/tagbar'
@@ -134,6 +135,10 @@ else
   colorscheme desert
 endif
 
+
+" Startify
+let g:startify_bookmarks = ['~/.vim/vimrc',]
+let g:startify_change_to_vcs_root = 1
 
 " Tagbar
 let g:tagbar_sort = 0
