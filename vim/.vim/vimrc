@@ -117,6 +117,10 @@ if has('gui_running')
   set background=dark
   colorscheme jellybeans
 
+  " Do not display vertical scrollbars
+  set guioptions-=L
+  set guioptions-=r
+
   " Use Ctrl-s for saving, also in Insert mode
   noremap   <C-s>  :update<CR>
   vnoremap  <C-s>  <C-c>:update<CR>
