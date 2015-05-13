@@ -50,9 +50,16 @@ alias grep='egrep --color=auto'
 alias j='jobs'
 alias h='history'
 alias hd='hexdump -C'
-alias nc='ncat'
 alias screen='screen -DR'
 alias tree='find . -type d | sed -e "s/[^-][^\/]*\//  |/g" -e "s/|\([^ ]\)/|-\1/"'
+
+if (( $+commands[ncat] )) ; then
+    alias nc='ncat'
+fi
+
+if (( $+commands[ack-grep] )) ; then
+    alias ack='ack-grep'
+fi
 
 # Avoid correcting and globbing on special commands
 for cmd in mv cp mkdir; alias $cmd="nocorrect $cmd"
