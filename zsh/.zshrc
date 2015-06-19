@@ -116,6 +116,11 @@ eval $(dircolors)
 #
 # Key bindings
 #
+autoload -U history-search-end
+
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+
 bindkey -v   # vi key bindings
 #bindkey -e  # emacs key bindings
 #bindkey -d  # default key bindings
@@ -130,8 +135,10 @@ bindkey '^[[5~' up-line-or-history    # Page Up key
 bindkey '^P'    up-line-or-history
 bindkey '^[[6~' down-line-or-history  # Page Down key
 bindkey '^N'    down-line-or-history
-bindkey '^[[A'  up-line-or-search     # Arrow Up key
-bindkey '^[[B'  down-line-or-search   # Arrow Down key
+bindkey '^[[A'  history-beginning-search-backward-end  # Arrow Up key
+bindkey '^[OA'  history-beginning-search-backward-end
+bindkey '^[[B'  history-beginning-search-forward-end   # Arrow Down key
+bindkey '^[OB'  history-beginning-search-forward-end
 bindkey ' '     magic-space
 bindkey '^I'    complete-word
 bindkey '^R'    history-incremental-search-backward
