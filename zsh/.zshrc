@@ -62,8 +62,13 @@ if (( $+commands[ack-grep] )) ; then
 fi
 
 # Avoid correcting and globbing on special commands
-for cmd in mv cp mkdir; alias $cmd="nocorrect $cmd"
-for cmd in alias expr find; alias $cmd="noglob $cmd"
+for cmd in mv cp mkdir ; do
+    alias $cmd="nocorrect $cmd"
+done
+
+for cmd in alias expr find ; do
+    alias $cmd="noglob $cmd"
+done
 
 # Global aliases
 alias -g L='| less'
