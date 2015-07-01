@@ -88,6 +88,10 @@ export EDITOR="vim"
 export LESS="-ieMR"
 export HELPDIR="/usr/local/lib/zsh/help"  # directory for run-help function to find docs
 
+# Search path for commands
+path+=~/bin
+path=($^path(N))
+
 # History options
 HISTFILE=~/.zhistory
 HISTSIZE=5000
