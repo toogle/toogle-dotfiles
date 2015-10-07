@@ -10,6 +10,7 @@ tool = vimdiff
 
 [alias]
 st    = status
+ss    = status -s
 ci    = commit
 br    = branch
 co    = checkout
