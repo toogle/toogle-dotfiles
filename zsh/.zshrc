@@ -31,6 +31,7 @@ setopt LONG_LIST_JOBS NOTIFY NO_AUTO_RESUME NO_BG_NICE
 # Shell functions
 setenv() { typeset -x "${1}${1:+=}${(@)argv[2,$#]}" }  # csh compatibility
 freload() { while (( $# )); do; unfunction $1; autoload -U $1; shift; done }
+hr() { printf '━%.0s' $(seq $COLUMNS); }
 
 # Autoload all shell functions from all directories in $fpath
 for func in $^fpath/*(N-.x:t); autoload $func
