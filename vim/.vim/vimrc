@@ -113,7 +113,7 @@ nnoremap  <leader>gs  :Gstatus<CR>
 " GUI and terminal settings
 "
 if has('gui_running')
-  set guifont=Consolas\ 10
+  set guifont=Source\ Code\ Pro\ 10
   set background=dark
   colorscheme jellybeans
 
