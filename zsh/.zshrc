@@ -31,7 +31,7 @@ setopt LONG_LIST_JOBS NOTIFY NO_AUTO_RESUME NO_BG_NICE
 # Shell functions
 setenv() { typeset -x "${1}${1:+=}${(@)argv[2,$#]}" }  # csh compatibility
 freload() { while (( $# )); do; unfunction $1; autoload -U $1; shift; done }
-hr() { printf '━%.0s' $(seq $COLUMNS); }
+hr() { printf '━%.0s' $(seq $COLUMNS) }
 
 # Autoload all shell functions from all directories in $fpath
 for func in $^fpath/*(N-.x:t); autoload $func
@@ -57,22 +57,12 @@ alias hd='hexdump -C'
 alias screen='screen -DR'
 alias tree='find . -type d | sed -e "s/[^-][^\/]*\//  |/g" -e "s/|\([^ ]\)/|-\1/"'
 
-if (( $+commands[ncat] )) ; then
-    alias nc='ncat'
-fi
-
-if (( $+commands[ack-grep] )) ; then
-    alias ack='ack-grep'
-fi
+if (( $+commands[ncat] )) alias nc='ncat'
+if (( $+commands[ack-grep] )) alias ack='ack-grep'
 
 # Avoid correcting and globbing on special commands
-for cmd in mv cp mkdir ; do
-    alias $cmd="nocorrect $cmd"
-done
-
-for cmd in alias expr find ; do
-    alias $cmd="noglob $cmd"
-done
+for cmd in mv cp mkdir; alias $cmd="nocorrect $cmd"
+for cmd in alias expr find; alias $cmd="noglob $cmd"
 
 # Global aliases
 alias -g L='| less'
