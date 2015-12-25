@@ -36,6 +36,9 @@ hr() { printf '━%.0s' $(seq $COLUMNS); }
 # Autoload all shell functions from all directories in $fpath
 for func in $^fpath/*(N-.x:t); autoload $func
 
+# Load zsh functions
+autoload zmv
+
 # Load zsh modules
 zmodload -a zsh/sched sched
 zmodload -a zsh/stat stat
