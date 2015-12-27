@@ -3,6 +3,8 @@ local gears = require("gears")
 local awful = require("awful")
 awful.rules = require("awful.rules")
 require("awful.autofocus")
+-- Dynamic tagging library
+local tyrannical = require("tyrannical")
 -- Widget and layout library
 local wibox = require("wibox")
 -- Theme handling library
@@ -73,12 +75,67 @@ end
 -- }}}
 
 -- {{{ Tags
--- Define a tag table which hold all screen tags.
-tags = {}
-for s = 1, screen.count() do
-    -- Each screen has its own tag table.
-    tags[s] = awful.tag({ 1, 2, 3, 4, 5, 6, 7, 8, 9 }, s, layouts[1])
-end
+-- Setup dynamic tagging.
+tyrannical.settings.default_layout = awful.layout.suit.tile
+tyrannical.settings.mwfact = 0.55
+
+tyrannical.tags = {
+    { name = "Term",
+      init = true,
+      exclusive = true,
+      screen = { 1, 2 },
+      selected = true,
+      class = { "XTerm" } },
+    { name = "Internet",
+      init = true,
+      exclusive = true,
+      screen = 1,
+      force_screen = true,
+      layout = awful.layout.suit.max,
+      class = { "Firefox", "firefox-developer", "chromium" } },
+    { name = "Email",
+      init = true,
+      exclusive = true,
+      screen = screen.count() > 1 and 2 or 1,
+      force_screen = true,
+      layout = awful.layout.suit.max,
+      class = { "Thunderbird", "Kmail" } },
+    { name = "IM",
+      init = true,
+      exclusive = true,
+      screen = 1,
+      force_screen = true,
+      layout = awful.layout.suit.floating,
+      class = { "Franz", "Slack", "Telegram", "Skype" } },
+    { name = "Develop",
+      init = true,
+      exclusive = true,
+      screen = screen.count() > 1 and 2 or 1,
+      force_screen = true,
+      layout = awful.layout.suit.max,
+      class = { "Gvim", "jetbrains-pycharm" } },
+    { name = "Office",
+      init = false,
+      exclusive = true,
+      screen = 1,
+      force_screen = true,
+      layout = awful.layout.suit.max,
+      class = { "Soffice", "Epdfview" },
+      instance = { "libreoffice" } },
+    { name = "Research",
+      init = false,
+      exclusive = true,
+      screen = screen.count() > 1 and 2 or 1,
+      force_screen = true,
+      layout = awful.layout.suit.floating,
+      class = { "wireshark-gtk", "burp-StartBurp" } }
+}
+
+-- Ignore the tag "exclusive" property for the following clients (matched by classes)
+tyrannical.properties.intrusive = { "Keepassx2", "pinentry" }
+
+-- Do not honor size hints request for those classes
+tyrannical.properties.size_hints_honor = { XTerm = false, Skype = false }
 -- }}}
 
 -- {{{ Menu
@@ -359,15 +416,13 @@ awful.rules.rules = {
                      raise = true,
                      keys = clientkeys,
                      buttons = clientbuttons } },
-    { rule = { class = "MPlayer" },
-      properties = { floating = true } },
-    { rule = { class = "pinentry" },
-      properties = { floating = true } },
-    { rule = { class = "gimp" },
-      properties = { floating = true } },
-    -- Set Firefox to always map on tags number 2 of screen 1.
-    -- { rule = { class = "Firefox" },
-    --   properties = { tag = tags[1][2] } },
+    { rule_any = { class = { "pinentry", "Keepassx2", "Franz" } },
+      properties = { floating = true },
+      callback = awful.placement.centered },
+    { rule = { class = "Keepassx2" },
+      callback = function(c) c:geometry({ width = 800 , height = 500 }) end },
+    { rule = { class = "Franz" },
+      callback = function(c) c:geometry({ width = 1010 , height = 800 }) end }
 }
 -- }}}
 
