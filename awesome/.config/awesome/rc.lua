@@ -7,6 +7,7 @@ require("awful.autofocus")
 local tyrannical = require("tyrannical")
 -- Widget and layout library
 local wibox = require("wibox")
+local vicious = require("vicious")
 -- Theme handling library
 local beautiful = require("beautiful")
 -- Notification library
@@ -165,8 +166,25 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- }}}
 
 -- {{{ Wibox
+-- Create a CPU widget
+cpuwidget = wibox.widget.textbox()
+vicious.register(cpuwidget, vicious.widgets.cpu, '  CPU: <span color="#FFD800">$1%</span>   ', 3)
+
+-- Create a memory widget
+memwidget = wibox.widget.textbox()
+vicious.register(memwidget, vicious.widgets.mem, 'Memory: <span color="#FFD800">$1%</span>   ', 3)
+
+-- Create a network widget
+netwidget = wibox.widget.textbox()
+vicious.register(netwidget, vicious.widgets.net, 'Network: <span color="#CC9393">${wlan0 down_kb} down</span> <span color="#7F9F7F">${wlan0 up_kb} up</span>   ', 3)
+
+-- Create a battery widget
+batwidget = wibox.widget.textbox()
+vicious.register(batwidget, vicious.widgets.bat, 'Battery: <span color="#FFD800">$2%</span>   ', 60, "BAT1")
+
 -- Create a textclock widget
-mytextclock = awful.widget.textclock()
+datewidget = wibox.widget.textbox()
+vicious.register(datewidget, vicious.widgets.date, "%b %d, %R   ", 60)
 
 -- Create a wibox for each screen and add it
 mywibox = {}
@@ -247,7 +265,11 @@ for s = 1, screen.count() do
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
-    right_layout:add(mytextclock)
+    right_layout:add(cpuwidget)
+    right_layout:add(memwidget)
+    right_layout:add(batwidget)
+    right_layout:add(netwidget)
+    right_layout:add(datewidget)
     right_layout:add(mylayoutbox[s])
 
     -- Now bring it all together (with the tasklist in the middle)
