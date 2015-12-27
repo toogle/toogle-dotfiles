@@ -12,6 +12,8 @@ local beautiful = require("beautiful")
 -- Notification library
 local naughty = require("naughty")
 local menubar = require("menubar")
+-- Revelation library
+local revelation = require("revelation")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -41,6 +43,9 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
+
+-- Initialize Revelation.
+revelation.init()
 
 -- This is used later as the default terminal and editor to run.
 terminal = "xterm"
@@ -268,6 +273,8 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
+    awful.key({ modkey,           }, "e",      revelation               ),
+    awful.key({ modkey, "Shift"   }, "e",      function () revelation({ curr_tag_only = true }) end),
 
     awful.key({ modkey,           }, "j",
         function ()

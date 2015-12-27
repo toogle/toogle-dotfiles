@@ -9,3 +9,6 @@
 [submodule "awesome/.config/awesome/tyrannical"]
 	path = awesome/.config/awesome/tyrannical
 	url = https://github.com/Elv13/tyrannical.git
+[submodule "awesome/.config/awesome/revelation"]
+	path = awesome/.config/awesome/revelation
+	url = https://github.com/guotsuan/awesome-revelation.git
