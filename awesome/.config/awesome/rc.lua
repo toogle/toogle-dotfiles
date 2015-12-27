@@ -296,7 +296,8 @@ root.buttons(awful.util.table.join(
 globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
-    awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
+    awful.key({ modkey,           }, "Tab",    awful.tag.history.restore),
+    awful.key({ modkey,           }, "Escape", function () awful.util.spawn('xlock') end),
     awful.key({ modkey,           }, "e",      revelation               ),
     awful.key({ modkey, "Shift"   }, "e",      function () revelation({ curr_tag_only = true }) end),
 

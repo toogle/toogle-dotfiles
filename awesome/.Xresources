@@ -4,3 +4,11 @@ XTerm*reverseVideo: on
 XTerm*faceName: DejaVu Sans Mono
 XTerm*faceSize: 9
 XTerm*bellIsUrgent: true
+
+XLock.mode: blank
+XLock.description: off
+XLock.echokeys: on
+XLock.echokey: *
+XLock.nice: 20
+
+Xautolock.time: 5

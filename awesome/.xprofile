@@ -1,0 +1,4 @@
+exec xautolock -detectsleep &
+
+exec autocutsel -fork &
+exec autocutsel -selection PRIMARY -fork &
