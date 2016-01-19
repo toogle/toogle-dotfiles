@@ -8,6 +8,7 @@ local tyrannical = require("tyrannical")
 -- Widget and layout library
 local wibox = require("wibox")
 local vicious = require("vicious")
+local cal = require('cal')
 -- Theme handling library
 local beautiful = require("beautiful")
 -- Notification library
@@ -185,6 +186,7 @@ vicious.register(batwidget, vicious.widgets.bat, 'Battery: <span color="#FFD800"
 -- Create a textclock widget
 datewidget = wibox.widget.textbox()
 vicious.register(datewidget, vicious.widgets.date, "%b %d, %R   ", 60)
+cal.register(datewidget)
 
 -- Create a wibox for each screen and add it
 mywibox = {}
