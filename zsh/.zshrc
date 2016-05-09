@@ -47,7 +47,7 @@ zmodload -a zsh/zpty zpty
 #
 # Aliases
 #
-alias ls='ls -F --group-directories-first --color=auto'
+alias ls='ls -F --group-directories-first --quoting-style=literal --color=auto'
 alias ll='ls -lh'
 alias rr='rm -rf'
 alias grep='egrep --color=auto'
