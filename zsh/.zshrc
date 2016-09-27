@@ -87,6 +87,9 @@ export EDITOR="vim"
 export LESS="-ieMR"
 export HELPDIR="/usr/local/lib/zsh/help"  # directory for run-help function to find docs
 
+# SSH key agent (see https://wiki.archlinux.org/index.php/SSH_keys#Start_ssh-agent_with_systemd_user)
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+
 # Search path for commands
 path+=~/bin
 path=($^path(N))
