@@ -141,6 +141,10 @@ if has('gui_running')
   cmap      <S-Insert>  <C-r>+
   exec "inoremap  <script>  <S-Insert>" paste#paste_cmd['i']
   exec "vnoremap  <script>  <S-Insert>" paste#paste_cmd['v']
+
+  " Easy tab navigation
+  map  <C-Tab>    gt
+  map  <C-S-Tab>  gT
 else
   colorscheme desert
 endif
