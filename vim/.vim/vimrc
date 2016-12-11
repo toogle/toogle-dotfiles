@@ -55,6 +55,8 @@ Bundle 'mhinz/vim-signify'
 Bundle 'jmcantrell/vim-virtualenv'
 Bundle 'scrooloose/syntastic'
 Bundle 'editorconfig/editorconfig-vim'
+Bundle 'vim-airline/vim-airline'
+Bundle 'vim-airline/vim-airline-themes'
 Bundle 'othree/html5.vim'
 Bundle 'pangloss/vim-javascript'
 Bundle 'groenewege/vim-less'
@@ -155,6 +157,10 @@ let g:tagbar_compact = 1
 " yankstack.vim
 nmap <C-p> <Plug>yankstack_substitute_older_paste
 nmap <C-n> <Plug>yankstack_substitute_newer_paste
+
+" vim-airline
+let g:airline_powerline_fonts = 1
+let g:airline_theme = 'jellybeans'
 
 " dragvisuals.vim
 vmap  <expr>  <Left>   DVB_Drag('left')
