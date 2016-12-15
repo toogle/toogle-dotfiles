@@ -88,6 +88,9 @@ vnoremap  j  gj
 nnoremap  k  gk
 vnoremap  k  gk
 
+" Select pasted text
+nnoremap  <expr>  vp  '`[' . strpart(getregtype(), 0, 1) . '`]'
+
 " Toggle folds with Space
 nnoremap  <silent>  <Space>  :exec 'silent! normal! za'.(foldlevel('.') ? '' : 'l')<CR>
 
@@ -103,6 +106,7 @@ map  <C-l>  <C-w>l
 " Toggle line numbers mode
 nnoremap  <F4>  :exec &nu==&rnu ? "set nu!" : "set rnu!"<CR>
 
+" Mappings for plugins
 nnoremap  <F5>  :NERDTree<CR>
 nnoremap  <F6>  :TagbarToggle<CR>
 nnoremap  <F7>  :IndentLinesToggle<CR>
