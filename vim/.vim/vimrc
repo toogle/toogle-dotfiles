@@ -113,8 +113,6 @@ nnoremap  <F7>  :IndentLinesToggle<CR>
 nnoremap  <F8>  :SyntasticToggleMode<CR>
 nnoremap  <F9>  :SignifyToggle<CR>
 
-nnoremap  <leader>gs  :Gstatus<CR>
-
 
 "
 " GUI and terminal settings
