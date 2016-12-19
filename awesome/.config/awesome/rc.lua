@@ -8,7 +8,7 @@ local tyrannical = require("tyrannical")
 -- Widget and layout library
 local wibox = require("wibox")
 local vicious = require("vicious")
-local cal = require('cal')
+local cal = require("cal")
 -- Theme handling library
 local beautiful = require("beautiful")
 -- Notification library
@@ -297,7 +297,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
     awful.key({ modkey,           }, "Tab",    awful.tag.history.restore),
-    awful.key({ modkey,           }, "Escape", function () awful.util.spawn('xlock') end),
+    awful.key({ modkey,           }, "Escape", function () awful.util.spawn("xlock") end),
     awful.key({ modkey,           }, "e",      revelation               ),
     awful.key({ modkey, "Shift"   }, "e",      function () revelation({ curr_tag_only = true }) end),
 
@@ -358,7 +358,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey            }, "p",     function() menubar.show() end),
 
     -- Take a screenshot
-    awful.key({                   }, "Print", function () awful.util.spawn_with_shell('sleep 0.5 && scrot -s') end)
+    awful.key({                   }, "Print", function () awful.util.spawn_with_shell("sleep 0.5 && scrot -s") end)
 )
 
 clientkeys = awful.util.table.join(
@@ -455,7 +455,7 @@ awful.rules.rules = {
     { rule_any = { class = { "pinentry", "Keepassx2", "Franz" } },
       properties = { floating = true },
       callback = awful.placement.centered },
-    { rule = { class = "Firefox", role = 'page-info' },
+    { rule = { class = "Firefox", role = "page-info" },
       properties = { floating = true },
       callback = awful.placement.centered },
     { rule = { class = "Keepassx2" },
