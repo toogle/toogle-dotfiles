@@ -50,7 +50,7 @@ beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
 revelation.init()
 
 -- This is used later as the default terminal and editor to run.
-terminal = "xterm"
+terminal = "urxvt"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -92,7 +92,7 @@ tyrannical.tags = {
       exclusive = true,
       screen = { 1, 2 },
       selected = true,
-      class = { "XTerm" } },
+      class = { "URxvt" } },
     { name = "Internet",
       init = true,
       exclusive = true,
@@ -142,7 +142,7 @@ tyrannical.tags = {
 tyrannical.properties.intrusive = { "Keepassx2", "pinentry" }
 
 -- Do not honor size hints request for those classes
-tyrannical.properties.size_hints_honor = { XTerm = false, Skype = false }
+tyrannical.properties.size_hints_honor = { URxvt = false, Skype = false }
 -- }}}
 
 -- {{{ Menu
