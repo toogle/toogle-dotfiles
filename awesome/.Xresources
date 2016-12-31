@@ -1,9 +1,25 @@
-XTerm*termName: xterm-256color
-XTerm*locale: true
-XTerm*reverseVideo: on
-XTerm*faceName: DejaVu Sans Mono
-XTerm*faceSize: 9
-XTerm*bellIsUrgent: true
+Xft.dpi: 96
+Xft.lcdfilter: lcddefault
+Xft.hinting: on
+Xft.hintstyle: hintslight
+Xft.autohint: off
+Xft.antialias: on
+Xft.rgba: rgb
+
+URxvt.font: xft:DejaVu Sans Mono for Powerline:Book:size=9
+URxvt.imFont: xft:DejaVu Sans Mono for Powerline:Book:size=9
+URxvt.boldFont: xft:DejaVu Sans Mono for Powerline:Bold:size=9
+URxvt.italicFont: xft:DejaVu Sans Mono for Powerline:Oblique:size=9
+URxvt.boldItalicFont: xft:DejaVu Sans Mono for Powerline:Bold:Oblique:size=9
+URxvt.letterSpace: -1
+URxvt.reverseVideo: on
+URxvt.scrollBar: off
+URxvt.secondaryScreen: on
+URxvt.secondaryScroll: off
+URxvt.perl-ext-common: default,matcher
+URxvt.url-launcher: /usr/bin/xdg-open
+URxvt.matcher.button: 1
+URxvt.matcher.rend.0: Uline fg5
 
 XLock.mode: blank
 XLock.description: off
