@@ -92,7 +92,7 @@ vnoremap  k  gk
 nnoremap  <expr>  vp  '`[' . strpart(getregtype(), 0, 1) . '`]'
 
 " Toggle folds with Space
-nnoremap  <silent>  <Space>  :exec 'silent! normal! za'.(foldlevel('.') ? '' : 'l')<CR>
+nnoremap  <silent>  <Space>  :exec 'silent! normal! za' . (foldlevel('.') ? '' : 'l')<CR>
 
 " Disable search highlighting on double Esc
 nnoremap  <silent>  <Esc><Esc>  :nohlsearch<CR>
