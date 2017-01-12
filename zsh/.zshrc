@@ -134,8 +134,10 @@ bindkey -v   # vi key bindings
 bindkey '^[[2~' yank                  # Insert key
 bindkey '^[[3~' delete-char           # Delete key
 bindkey '^[[1~' beginning-of-line     # Home key
+bindkey '^[[7~' beginning-of-line
 bindkey '^[[H'  beginning-of-line
 bindkey '^[[4~' end-of-line           # End key
+bindkey '^[[8~' end-of-line
 bindkey '^[[F'  end-of-line
 bindkey '^[[5~' up-line-or-history    # Page Up key
 bindkey '^P'    up-line-or-history
