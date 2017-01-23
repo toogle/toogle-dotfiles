@@ -89,9 +89,17 @@ end
 -- }}}
 
 -- {{{ Tags
--- Setup dynamic tagging.
+-- The default layout for tags
 tyrannical.settings.default_layout = awful.layout.suit.tile
+
+-- The default master/slave ratio
 tyrannical.settings.mwfact = 0.55
+
+-- Prevent popups from stealing focus
+tyrannical.settings.block_children_focus_stealing = true
+
+-- Add dialogs to the same tags as their parent client
+tyrannical.settings.group_children = true
 
 tyrannical.tags = {
     { name = "Term",
@@ -134,7 +142,7 @@ tyrannical.tags = {
       screen = 1,
       force_screen = true,
       layout = awful.layout.suit.max,
-      class = { "Soffice", "Epdfview" },
+      class = { "Soffice", "MuPDF" },
       instance = { "libreoffice" } },
     { name = "Research",
       init = false,
@@ -146,7 +154,17 @@ tyrannical.tags = {
 }
 
 -- Ignore the tag "exclusive" property for the following clients (matched by classes)
-tyrannical.properties.intrusive = { "Keepassx2", "pinentry" }
+tyrannical.properties.intrusive = { "pinentry", "Keepassx2" }
+
+-- Ignore the tiled layout for the matching clients
+tyrannical.properties.floating = { "pinentry", "Keepassx2", "Franz" }
+
+-- Force the matching clients (by classes) to be centered on the screen on init
+tyrannical.properties.placement = {
+    pinentry = awful.placement.centered,
+    Keepassx2 = awful.placement.centered,
+    Franz = awful.placement.centered
+}
 
 -- Do not honor size hints request for those classes
 tyrannical.properties.size_hints_honor = { URxvt = false, Skype = false }
@@ -550,12 +568,6 @@ awful.rules.rules = {
                      placement = awful.placement.no_overlap+awful.placement.no_offscreen
      }
     },
-    { rule_any = { class = { "pinentry", "Keepassx2", "Franz" } },
-      properties = { floating = true },
-      callback = awful.placement.centered },
-    { rule = { class = "Firefox", role = "page-info" },
-      properties = { floating = true },
-      callback = awful.placement.centered },
 
     -- Add titlebars to dialogs and place them centered
     { rule = { type = "dialog" },
