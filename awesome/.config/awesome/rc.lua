@@ -557,6 +557,13 @@ awful.rules.rules = {
       properties = { floating = true },
       callback = awful.placement.centered },
 
+    -- Add titlebars to dialogs and place them centered
+    { rule = { type = "dialog" },
+      properties = { titlebars_enabled = true,
+                     placement = awful.placement.centered
+     }
+    },
+
     -- Set geometry for Keepassx2 client
     { rule = { class = "Keepassx2" },
       callback = function(c) c:geometry({ width = 800 , height = 500 }) end },
