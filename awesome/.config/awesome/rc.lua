@@ -574,8 +574,8 @@ awful.rules.rules = {
      }
     },
 
-    -- Add titlebars to dialogs and place them centered
-    { rule = { type = "dialog" },
+    -- Add titlebars to dialogs and splash screens and place them centered
+    { rule_any = { type = { "dialog", "splash" } },
       properties = { titlebars_enabled = true,
                      placement = awful.placement.centered
      }
@@ -583,11 +583,17 @@ awful.rules.rules = {
 
     -- Set geometry for Keepassx2 client
     { rule = { class = "Keepassx2" },
-      callback = function(c) c:geometry({ width = 800 , height = 500 }) end },
+      callback = function(c)
+          c:geometry({ width = 800 , height = 500 })
+      end
+    },
 
     -- Set geometry for Franz client
     { rule = { class = "Franz" },
-      callback = function(c) c:geometry({ width = 1010 , height = 800 }) end }
+      callback = function(c)
+          c:geometry({ width = 1010 , height = 800 })
+      end
+    }
 }
 -- }}}
 
