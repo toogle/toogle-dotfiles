@@ -1,0 +1,5 @@
+set cmd:ls-default "-a"
+set ftp:timezone ""
+
+alias ll ls
+alias rr rm -rf
