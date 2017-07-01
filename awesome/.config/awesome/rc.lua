@@ -168,15 +168,15 @@ tyrannical.tags = {
 }
 
 -- Ignore the tag "exclusive" property for the following clients (matched by classes)
-tyrannical.properties.intrusive = { "pinentry", "Keepassx2", "Vlc" }
+tyrannical.properties.intrusive = { "pinentry", "keepassxc", "Vlc" }
 
 -- Ignore the tiled layout for the matching clients
-tyrannical.properties.floating = { "pinentry", "Keepassx2", "Vlc", "Franz" }
+tyrannical.properties.floating = { "pinentry", "keepassxc", "Vlc", "Franz" }
 
 -- Force the matching clients (by classes) to be centered on the screen on init
 tyrannical.properties.placement = {
     pinentry = awful.placement.centered,
-    Keepassx2 = awful.placement.centered,
+    keepassxc = awful.placement.centered,
     Franz = awful.placement.centered
 }
 
@@ -595,8 +595,8 @@ awful.rules.rules = {
      }
     },
 
-    -- Set geometry for Keepassx2 client
-    { rule = { class = "Keepassx2" },
+    -- Set geometry for KeePassXC client
+    { rule = { class = "keepassxc" },
       callback = function(c)
           c:geometry({ width = 800 , height = 500 })
       end
