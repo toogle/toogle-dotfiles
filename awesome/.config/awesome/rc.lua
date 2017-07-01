@@ -168,10 +168,10 @@ tyrannical.tags = {
 }
 
 -- Ignore the tag "exclusive" property for the following clients (matched by classes)
-tyrannical.properties.intrusive = { "pinentry", "Keepassx2" }
+tyrannical.properties.intrusive = { "pinentry", "Keepassx2", "Vlc" }
 
 -- Ignore the tiled layout for the matching clients
-tyrannical.properties.floating = { "pinentry", "Keepassx2", "Franz" }
+tyrannical.properties.floating = { "pinentry", "Keepassx2", "Vlc", "Franz" }
 
 -- Force the matching clients (by classes) to be centered on the screen on init
 tyrannical.properties.placement = {
