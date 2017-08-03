@@ -56,6 +56,7 @@ alias h='history'
 alias hd='hexdump -C'
 alias screen='screen -DR'
 alias tree='find . -type d | sed -e "s/[^-][^\/]*\//  |/g" -e "s/|\([^ ]\)/|-\1/"'
+alias ssh-add-all='find ~/.ssh -type f \( -name "id_*" ! -name "id_*.pub" \) -exec ssh-add {} +'
 
 if (( $+commands[ncat] )) alias nc='ncat'
 if (( $+commands[ack-grep] )) alias ack='ack-grep'
