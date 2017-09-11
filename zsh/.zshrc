@@ -118,7 +118,7 @@ fi
 PROMPT2="%{${fg_bold[blue]}%}>%{$reset_color%} "
 
 # Color setup for ls
-eval $(dircolors)
+if (( $+commands[dircolors] )) eval $(dircolors)
 
 #
 # Key bindings
