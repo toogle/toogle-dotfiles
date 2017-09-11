@@ -47,7 +47,6 @@ zmodload -a zsh/zpty zpty
 #
 # Aliases
 #
-alias ls='ls -F --group-directories-first --quoting-style=literal --color=auto'
 alias ll='ls -lh'
 alias rr='rm -rf'
 alias grep='egrep --color=auto'
@@ -60,6 +59,16 @@ alias ssh-add-all='find ~/.ssh -type f \( -name "id_*" ! -name "id_*.pub" \) -ex
 
 if (( $+commands[ncat] )) alias nc='ncat'
 if (( $+commands[ack-grep] )) alias ack='ack-grep'
+
+# OS-specific aliases
+case $(uname) in
+    Darwin)
+        alias ls='ls -G'
+        ;;
+    Linux)
+        alias ls='ls -F --group-directories-first --quoting-style=literal --color=auto'
+        ;;
+esac
 
 # Avoid correcting and globbing on special commands
 for cmd in mv cp mkdir; alias $cmd="nocorrect $cmd"
