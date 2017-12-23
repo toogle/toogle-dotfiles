@@ -43,6 +43,7 @@ execute vundle#rc()
 
 Bundle 'gmarik/vundle'
 Bundle 'mhinz/vim-startify'
+Bundle 'wincent/terminus'
 Bundle 'scrooloose/nerdtree'
 Bundle 'majutsushi/tagbar'
 Bundle 'maxbrunsfeld/vim-yankstack'
