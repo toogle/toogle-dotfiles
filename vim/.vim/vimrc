@@ -133,6 +133,10 @@ if has('gui_running')
   set guioptions-=L
   set guioptions-=r
 
+  " Highlight screen line and column of the cursor
+  set cursorline
+  set cursorcolumn
+
   " Use Ctrl-s for saving, also in Insert mode
   noremap   <C-s>  :update<CR>
   vnoremap  <C-s>  <C-c>:update<CR>
