@@ -44,6 +44,7 @@ execute vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'mhinz/vim-startify'
 Bundle 'wincent/terminus'
+Bundle 'easymotion/vim-easymotion'
 Bundle 'scrooloose/nerdtree'
 Bundle 'majutsushi/tagbar'
 Bundle 'maxbrunsfeld/vim-yankstack'
@@ -157,6 +158,11 @@ endif
 " Startify
 let g:startify_bookmarks = ['~/.vim/vimrc',]
 let g:startify_change_to_vcs_root = 1
+
+" EasyMotion
+let g:EasyMotion_verbose = 0
+
+map <Leader> <Plug>(easymotion-prefix)
 
 " Tagbar
 let g:tagbar_sort = 0
