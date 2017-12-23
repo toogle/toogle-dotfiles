@@ -125,7 +125,7 @@ nnoremap  <F9>  :SignifyToggle<CR>
 " GUI and terminal settings
 "
 if has('gui_running')
-  set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 9
+  set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h11
   set background=dark
   colorscheme jellybeans
 
