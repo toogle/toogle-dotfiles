@@ -94,6 +94,10 @@ vnoremap  k  gk
 " Select pasted text
 nnoremap  <expr>  vp  '`[' . strpart(getregtype(), 0, 1) . '`]'
 
+" Keep selected text when fixing indentation
+vnoremap  <  <gv
+vnoremap  >  >gv
+
 " Toggle folds with Space
 nnoremap  <silent>  <Space>  :exec 'silent! normal! za' . (foldlevel('.') ? '' : 'l')<CR>
 
