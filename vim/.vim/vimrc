@@ -21,6 +21,9 @@ set ignorecase  " ignore case of letters while searching
 set smartcase   " do smart case matching
 set hlsearch    " highlight matches
 
+" Remove a comment leader when joining lines
+set formatoptions+=j
+
 " Display unprintable characters
 set listchars=tab:▸\ ,trail:·,nbsp:~,precedes:«,extends:»
 set list
