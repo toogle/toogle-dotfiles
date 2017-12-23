@@ -183,34 +183,3 @@ vmap  <expr>  <Up>     DVB_Drag('up')
 vmap  <expr>  D        DVB_Duplicate()
 
 let g:DVB_TrimWS = 1
-
-
-"
-" Swap buffers between windows
-" http://stackoverflow.com/questions/2586984/how-can-i-swap-positions-of-two-open-files-in-splits-in-vim
-"
-function! MarkWindowSwap()
-  let g:markedWinNum = winnr()
-endfunction
-
-function! DoWindowSwap()
-  " Mark destination
-  let curNum = winnr()
-  let curBuf = bufnr("%")
-  exec g:markedWinNum . "wincmd w"
-
-  " Switch to source and shuffle dest->source
-  let markedBuf = bufnr("%")
-
-  " Hide and open so that we aren't prompted and keep history
-  exec 'hide buf' curBuf
-
-  " Switch to dest and shuffle source->dest
-  exec curNum . "wincmd w"
-
-  " Hide and open so that we aren't prompted and keep history
-  exec 'hide buf' markedBuf
-endfunction
-
-noremap  <silent>  <leader>wm  :call MarkWindowSwap()<CR>
-noremap  <silent>  <leader>ws  :call DoWindowSwap()<CR>
