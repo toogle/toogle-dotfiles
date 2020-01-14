@@ -97,6 +97,10 @@ export EDITOR="vim"
 export LESS="-ieMR"
 export HELPDIR="/usr/local/lib/zsh/help"  # directory for run-help function to find docs
 
+# Locale settings
+export LC_ALL="en_US.UTF-8"
+export LANG="en_US.UTF-8"
+
 # Search path for commands
 path+=~/bin
 path=($^path(N))
