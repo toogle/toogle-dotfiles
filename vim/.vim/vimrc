@@ -65,6 +65,7 @@ Bundle 'pangloss/vim-javascript'
 Bundle 'groenewege/vim-less'
 Bundle 'digitaltoad/vim-pug'
 Bundle 'plasticboy/vim-markdown'
+Plugin 'chrisbra/csv.vim'
 Bundle 'nanotech/jellybeans.vim'
 
 filetype plugin indent on
