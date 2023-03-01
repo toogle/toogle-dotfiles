@@ -79,7 +79,7 @@ alias -g L='| less'
 alias -g H='| head'
 alias -g T='| tail'
 alias -g G='| grep'
-alias -g J='| python -m json.tool'
+alias -g J='| jq -M'
 
 # Suffix aliases
 alias -s c=vim
