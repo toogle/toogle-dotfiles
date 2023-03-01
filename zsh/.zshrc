@@ -54,6 +54,7 @@ alias j='jobs'
 alias h='history'
 alias hd='hexdump -C'
 alias screen='screen -DR'
+alias vim='nvim'
 alias tree='find . -type d | sed -e "s/[^-][^\/]*\//  |/g" -e "s/|\([^ ]\)/|-\1/"'
 alias ssh-add-all='find ~/.ssh -type f \( -name "id_*" ! -name "id_*.pub" \) -exec ssh-add {} +'
 
