@@ -127,10 +127,6 @@ if exists("g:neovide")
   set guioptions-=L
   set guioptions-=r
 
-  " Highlight screen line and column of the cursor
-  set cursorline
-  set cursorcolumn
-
   " Use Ctrl-s for saving, also in Insert mode
   noremap   <D-s>  :update<CR>
   vnoremap  <D-s>  <C-c>:update<CR>
