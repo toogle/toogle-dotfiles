@@ -51,7 +51,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-signify'
-Plug 'scrooloose/syntastic'
+Plug 'dense-analysis/ale'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -108,11 +108,10 @@ map  <C-l>  <C-w>l
 nnoremap  <F4>  :exec &nu==&rnu ? "set nu!" : "set rnu!"<CR>
 
 " Mappings for plugins
-nnoremap  <F5>  :NERDTree<CR>
+nnoremap  <F5>  :NERDTreeToggle<CR>
 nnoremap  <F6>  :TagbarToggle<CR>
 nnoremap  <F7>  :IndentLinesToggle<CR>
-nnoremap  <F8>  :SyntasticToggleMode<CR>
-nnoremap  <F9>  :SignifyToggle<CR>
+nnoremap  <F8>  :SignifyToggle<CR>
 
 
 "
