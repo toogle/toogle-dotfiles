@@ -120,8 +120,8 @@ nnoremap  <F8>  :SignifyToggle<CR>
 "
 " GUI and terminal settings
 "
-if exists("g:neovide")
-  set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h12
+if has('gui_running')
+  set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h11
   set background=dark
   colorscheme jellybeans
 
@@ -130,14 +130,14 @@ if exists("g:neovide")
   set guioptions-=r
 
   " Use Ctrl-s for saving, also in Insert mode
-  noremap   <D-s>  :update<CR>
-  vnoremap  <D-s>  <C-c>:update<CR>
-  inoremap  <D-s>  <C-o>:update<CR>
+  noremap   <C-s>  :update<CR>
+  vnoremap  <C-s>  <C-c>:update<CR>
+  inoremap  <C-s>  <C-o>:update<CR>
 
   " Use Ctrl-q for quit, also in Insert mode
-  noremap   <D-q>  :qall<CR>
-  vnoremap  <D-q>  <C-c>:qall<CR>
-  inoremap  <D-q>  <C-o>:qall<CR>
+  noremap   <C-q>  :qall<CR>
+  vnoremap  <C-q>  <C-c>:qall<CR>
+  inoremap  <C-q>  <C-o>:qall<CR>
 
   " Common clipboard operations
   vnoremap  <S-Del>     "+x   " Shift-Del is Cut
