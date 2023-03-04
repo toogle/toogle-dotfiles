@@ -32,6 +32,9 @@ set list
 set statusline=%F%m%r%h%w%=%(%c%V\ %l/%L\ %P%)
 set laststatus=2
 
+" Update more frequently for asyncronous plugins
+set updatetime=100
+
 
 "
 " Plugins
