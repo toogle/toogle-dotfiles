@@ -172,6 +172,9 @@ let g:tagbar_compact = 1
 nmap <C-p> <Plug>yankstack_substitute_older_paste
 nmap <C-n> <Plug>yankstack_substitute_newer_paste
 
+" ALE
+let g:ale_completion_enabled = 1
+
 " vim-airline
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'jellybeans'
