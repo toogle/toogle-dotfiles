@@ -116,14 +116,15 @@ nnoremap  <F6>  :TagbarToggle<CR>
 nnoremap  <F7>  :IndentLinesToggle<CR>
 nnoremap  <F8>  :SignifyToggle<CR>
 
+colorscheme jellybeans
+
 
 "
-" GUI and terminal settings
+" GUI settings
 "
 if has('gui_running')
-  set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h11
+  set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h12
   set background=dark
-  colorscheme jellybeans
 
   " Do not display vertical scrollbars
   set guioptions-=L
@@ -150,8 +151,6 @@ if has('gui_running')
   " Easy tab navigation
   map  <C-Tab>    gt
   map  <C-S-Tab>  gT
-else
-  colorscheme desert
 endif
 
 
