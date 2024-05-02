@@ -63,6 +63,7 @@ Plug 'othree/html5.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'plasticboy/vim-markdown'
 Plug 'chrisbra/csv.vim'
+Plug 'madox2/vim-ai'
 Plug 'nanotech/jellybeans.vim'
 
 call plug#end()
