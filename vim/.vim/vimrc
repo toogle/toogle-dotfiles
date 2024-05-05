@@ -63,8 +63,6 @@ Plug 'othree/html5.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'plasticboy/vim-markdown'
 Plug 'chrisbra/csv.vim'
-Plug 'madox2/vim-ai'
-Plug 'github/copilot.vim'
 Plug 'nanotech/jellybeans.vim'
 
 call plug#end()
@@ -183,46 +181,3 @@ let g:airline_theme = 'jellybeans'
 
 " vim-bufferline
 let g:bufferline_echo = 0
-
-" vim-ai
-let initial_prompt =<< trim END
->>> system
-
-You are going to play a role of a completion engine with following parameters:
-Task: Provide compact code/text completion, generation, transformation or explanation
-Topic: General programming and text editing
-Style: Plain and concise result without code highlighting and any commentary, unless commentary is necessary
-Audience: Users of text editor and programmers that need to transform/generate text
-END
-
-let chat_engine_config = {
-\  "engine": "chat",
-\  "options": {
-\    "model": "gpt-4o",
-\    "endpoint_url": "https://api.openai.com/v1/chat/completions",
-\    "max_tokens": 1000,
-\    "temperature": 0.1,
-\    "request_timeout": 20,
-\    "selection_boundary": "",
-\    "initial_prompt": initial_prompt,
-\  },
-\}
-
-" :AI
-let g:vim_ai_complete = chat_engine_config
-
-" :AIEdit
-let g:vim_ai_edit = chat_engine_config
-
-" :AIChat
-let g:vim_ai_chat = {
-\  "options": {
-\    "model": "gpt-4o",
-\  },
-\}
-
-" Copilot
-imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
-let g:copilot_no_tab_map = v:true
-
-imap <C-L> <Plug>(copilot-accept-word)
