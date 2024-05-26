@@ -72,11 +72,12 @@ call plug#end()
 "
 " Keyboard mappings
 "
-set keymap=russian-jcukenwin
 set iminsert=0
 set imsearch=0
 
 set backspace=indent,eol,start
+
+set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
 
 noremap  ;  :
 
