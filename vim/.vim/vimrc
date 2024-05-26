@@ -64,6 +64,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'plasticboy/vim-markdown'
 Plug 'chrisbra/csv.vim'
 Plug 'madox2/vim-ai'
+Plug 'github/copilot.vim'
 Plug 'nanotech/jellybeans.vim'
 
 call plug#end()
@@ -174,7 +175,7 @@ nmap <C-p> <Plug>yankstack_substitute_older_paste
 nmap <C-n> <Plug>yankstack_substitute_newer_paste
 
 " ALE
-let g:ale_completion_enabled = 1
+set omnifunc=ale#completion#OmniFunc
 
 " vim-airline
 let g:airline_powerline_fonts = 1
@@ -219,3 +220,9 @@ let g:vim_ai_chat = {
 \    "model": "gpt-4o",
 \  },
 \}
+
+" Copilot
+imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
+let g:copilot_no_tab_map = v:true
+
+imap <C-L> <Plug>(copilot-accept-word)
