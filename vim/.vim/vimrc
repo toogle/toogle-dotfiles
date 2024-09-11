@@ -203,7 +203,7 @@ END
 let chat_engine_config = {
 \  "engine": "chat",
 \  "options": {
-\    "model": "gpt-4o",
+\    "model": "gpt-4o-2024-08-06",
 \    "endpoint_url": "https://api.openai.com/v1/chat/completions",
 \    "max_tokens": 1000,
 \    "temperature": 0.1,
@@ -222,12 +222,13 @@ let g:vim_ai_edit = chat_engine_config
 " :AIChat
 let g:vim_ai_chat = {
 \  "options": {
-\    "model": "gpt-4o",
+\    "model": "gpt-4o-2024-08-06",
 \  },
 \}
 
 " Copilot
 imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
 let g:copilot_no_tab_map = v:true
+"let g:copilot_proxy = "http://copilot:vPqmp6UQVNvnk7bLnfQ6TesY@89.110.111.11:3128"
 
 imap <C-L> <Plug>(copilot-accept-word)
