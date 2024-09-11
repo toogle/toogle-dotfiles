@@ -91,6 +91,11 @@ vnoremap  j  gj
 nnoremap  k  gk
 vnoremap  k  gk
 
+nnoremap  о  по
+vnoremap  о  по
+nnoremap  л  пл
+vnoremap  л  пл
+
 " Select pasted text
 nnoremap  <expr>  vp  '`[' . strpart(getregtype(), 0, 1) . '`]'
 
