@@ -1,5 +1,6 @@
 [core]
 whitespace = trailing-space, space-before-tab, cr-at-eol
+quotepath = off
 
 [user]
 name  = toogle
