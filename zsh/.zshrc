@@ -92,7 +92,7 @@ alias -s tex=vim
 # Environment variables
 #
 export PAGER="less"
-export EDITOR="vim"
+export EDITOR="nvim"
 #export BROWSER=""
 export LESS="-ieMR"
 export HELPDIR="/usr/local/lib/zsh/help"  # directory for run-help function to find docs
