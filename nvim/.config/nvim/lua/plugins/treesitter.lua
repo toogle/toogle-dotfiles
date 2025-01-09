@@ -41,12 +41,5 @@ return {
         enable = true
       }
     })
-
-    -- Use treesitter for folding
-    vim.wo.foldmethod = 'expr'
-    vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-
-    -- Disable folding by default
-    vim.wo.foldenable = false
   end
 }

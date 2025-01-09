@@ -69,10 +69,15 @@ return {
       matching = { disallow_symbol_nonprefix_matching = false }
     })
 
-    -- Set up lspconfig
+    -- Tell the server the capability of foldingRange for nvim-ufo
     local capabilities = require('cmp_nvim_lsp').default_capabilities()
-    local mason_lspconfig = require('mason-lspconfig')
-    mason_lspconfig.setup_handlers({
+    capabilities.textDocument.foldingRange = {
+      dynamicRegistration = false,
+      lineFoldingOnly = true
+    }
+
+    -- Set up capabilities for LSP servers
+    require('mason-lspconfig').setup_handlers({
       function(server_name)
         require('lspconfig')[server_name].setup({
           capabilities = capabilities
