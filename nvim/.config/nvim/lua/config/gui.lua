@@ -24,6 +24,7 @@ if g.neovide then
   end)
 
   -- Tab navigation
+  keymap.set('n', '<D-w>', '<cmd>tabclose<CR>')
   keymap.set('n', '<D-}>', 'gt', { noremap = true })
   keymap.set('n', '<D-{>', 'gT', { noremap = true })
 end
