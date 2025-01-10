@@ -1,6 +1,6 @@
 return {
   'nvim-neo-tree/neo-tree.nvim',
-  --branch = 'v3.x',
+  lazy = false,  -- to use as netrw replacement
   dependencies = {
     'nvim-lua/plenary.nvim',
     'nvim-tree/nvim-web-devicons',
@@ -35,7 +35,6 @@ return {
       use_libuv_file_watcher = true
     }
   },
-  lazy = false,  -- to use as netrw replacement
   keys = {
     { '<leader>ft', '<cmd>Neotree toggle<CR>', desc = 'NeoTree' }
   }

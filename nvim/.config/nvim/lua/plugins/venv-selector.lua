@@ -1,5 +1,8 @@
 return {
   'linux-cultist/venv-selector.nvim',
+  branch = 'regexp',
+  event = 'VeryLazy',
+  lazy = false,
   dependencies = {
     'neovim/nvim-lspconfig',
     {
@@ -9,9 +12,6 @@ return {
       }
     }
   },
-  branch = 'regexp',
-  event = 'VeryLazy',
-  lazy = false,
   opts = {},
   keys = {
     { '<leader>vs', '<cmd>VenvSelect<CR>', desc = 'Venv Selector' }

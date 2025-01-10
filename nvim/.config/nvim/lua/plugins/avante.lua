@@ -2,6 +2,8 @@ return {
   'yetone/avante.nvim',
   version = false,
   build = 'make',
+  event = 'VeryLazy',
+  lazy = false,
   dependencies = {
     'stevearc/dressing.nvim',
     'nvim-lua/plenary.nvim',
@@ -16,8 +18,6 @@ return {
       ft = { 'markdown', 'Avante' }
     }
   },
-  event = 'VeryLazy',
-  lazy = false,
   opts = {
     provider = 'openai',
     auto_suggestions_provider = 'openai',
