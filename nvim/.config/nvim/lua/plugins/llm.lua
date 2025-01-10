@@ -10,9 +10,6 @@ return {
       temperature = 0.2,
       top_p = 0.95,
       max_tokens = 40,
-      -- stop = '\n',
-      -- repetition_penalty = 1.2,
-      -- repetition_context_size = 40,
     },
     fim = {
       enabled = true,
@@ -21,7 +18,7 @@ return {
       suffix = '<｜fim▁hole｜>',
     },
     debounce_ms = 600,
-    accept_keymap = '<C-J>',
+    accept_keymap = '<C-j>',
     lsp = {
       bin_path = vim.fn.stdpath('data') .. '/mason/bin/llm-ls'
     },
