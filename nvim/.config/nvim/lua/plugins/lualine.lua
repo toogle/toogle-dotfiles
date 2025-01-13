@@ -16,14 +16,6 @@ return {
           'trouble'
         }
       }
-    },
-    sections = {
-      lualine_c = {
-        {
-          'buffers',
-          mode = 4  -- shows buffer name + buffer number
-        }
-      }
     }
   }
 }
