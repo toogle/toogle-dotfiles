@@ -27,3 +27,4 @@ opt.spelllang = { 'en_us', 'ru_yo' }
 opt.hidden = true       -- allow edit buffers to be hidden
 opt.confirm = true      -- ask for confirmation before saving or exiting
 opt.errorbells = false  -- disable error bells
+opt.scrolloff = 5       -- minimal number of screen lines to keep above and below the cursor
