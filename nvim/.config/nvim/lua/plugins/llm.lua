@@ -18,7 +18,6 @@ return {
       suffix = '<｜fim▁hole｜>',
     },
     debounce_ms = 600,
-    accept_keymap = '<C-j>',
     lsp = {
       bin_path = vim.fn.stdpath('data') .. '/mason/bin/llm-ls'
     },
