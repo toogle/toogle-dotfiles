@@ -1,26 +1,26 @@
 local keymap = vim.keymap
 
 -- Allow semicolon to act as colon
-keymap.set({ 'n', 'v' }, ';', ':', { noremap = true })
+keymap.set({ 'n', 'v' }, ';', ':')
 
 -- Easy window navigation
-keymap.set('n', '<C-h>', '<C-w>h', { noremap = true })
-keymap.set('n', '<C-j>', '<C-w>j', { noremap = true })
-keymap.set('n', '<C-k>', '<C-w>k', { noremap = true })
-keymap.set('n', '<C-l>', '<C-w>l', { noremap = true })
+keymap.set('n', '<C-h>', '<C-w>h')
+keymap.set('n', '<C-j>', '<C-w>j')
+keymap.set('n', '<C-k>', '<C-w>k')
+keymap.set('n', '<C-l>', '<C-w>l')
 
 -- Jump to the next row even with line wrapping enabled
-keymap.set('', 'j', 'gj', { noremap = true })
-keymap.set('', 'k', 'gk', { noremap = true })
-keymap.set('', 'о', 'gj', { noremap = true })
-keymap.set('', 'л', 'gk', { noremap = true })
+keymap.set('', 'j', 'gj')
+keymap.set('', 'k', 'gk')
+keymap.set('', 'о', 'gj')
+keymap.set('', 'л', 'gk')
 
 -- Keep selected text when fixing indentation
-keymap.set('x', '<', '<gv', { noremap = true })
-keymap.set('x', '>', '>gv', { noremap = true })
+keymap.set('x', '<', '<gv')
+keymap.set('x', '>', '>gv')
 
 -- Allow saving of files as root when I forgot to start nvim using sudo
-keymap.set('c', 'w!!', 'w !sudo tee > /dev/null %', { noremap = true })
+keymap.set('c', 'w!!', 'w !sudo tee > /dev/null %')
 
 -- Toggle line numbers mode
-keymap.set('n', '<leader>nu', ':exec &nu==&rnu ? "set nu!" : "set rnu!"<CR>', { noremap = true })
+keymap.set('n', '<leader>nu', ':exec &nu==&rnu ? "set nu!" : "set rnu!"<CR>')
