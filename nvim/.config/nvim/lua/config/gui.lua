@@ -7,25 +7,31 @@ if g.neovide then
   opt.guifont = 'DejaVuSansM Nerd Font Mono:h14'
   opt.background = 'dark'
 
-  -- Turn off all animations
-  -- g.neovide_position_animation_length = 0
-  -- g.neovide_cursor_animation_length = 0.00
-  -- g.neovide_cursor_trail_size = 0
-  -- g.neovide_cursor_animate_in_insert_mode = false
-  -- g.neovide_cursor_animate_command_line = false
+  -- Option Key is Meta
+  g.neovide_input_macos_option_key_is_meta = 'both'
+
+  -- Turn off scroll animation
   g.neovide_scroll_animation_far_lines = 0
   g.neovide_scroll_animation_length = 0.00
 
+  -- Save
   keymap.set({ 'n', 'v', 'i', 'c' }, '<D-s>', '<cmd>update<CR>')
+
+  -- Clipboard
   keymap.set('x', '<D-c>', '"+y')
   keymap.set('x', '<D-x>', '"+x')
   keymap.set({ 'n', 'v', 'i', 'c' }, '<D-v>', function()
     vim.api.nvim_paste(vim.fn.getreg('+'), false, -1)
   end)
 
-  -- Tab navigation
-  keymap.set('n', '<D-w>', '<cmd>tabclose<CR>')
-  keymap.set('n', '<D-}>', 'gt', { noremap = true })
-  keymap.set('n', '<D-{>', 'gT', { noremap = true })
+  -- Font scaling
+  keymap.set({ 'n', 'v' }, '<D-=>', function()
+    g.neovide_scale_factor = g.neovide_scale_factor + 0.1
+  end)
+  keymap.set({ 'n', 'v' }, '<D-->', function()
+    g.neovide_scale_factor = g.neovide_scale_factor - 0.1
+  end)
+  keymap.set({ 'n', 'v' }, '<D-0>', function()
+    g.neovide_scale_factor = 1
+  end)
 end
-
