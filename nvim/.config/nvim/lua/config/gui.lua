@@ -17,6 +17,9 @@ if g.neovide then
   -- Save
   keymap.set({ 'n', 'v', 'i', 'c' }, '<D-s>', '<cmd>update<CR>')
 
+  -- Select all
+  keymap.set({ 'n', 'v' }, '<D-a>', '<cmd>normal! ggVG<CR>')
+
   -- Clipboard
   keymap.set('x', '<D-c>', '"+y')
   keymap.set('x', '<D-x>', '"+x')
