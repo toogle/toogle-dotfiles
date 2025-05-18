@@ -10,6 +10,7 @@ return {
         statusline = {
           'Avante',
           'AvanteInput',
+          'AvanteSelectedFiles',
           'alpha',
           'neo-tree',
           'toggleterm',
