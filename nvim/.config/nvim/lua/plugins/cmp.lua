@@ -2,13 +2,15 @@ return {
   'hrsh7th/nvim-cmp',
   dependencies = {
     {
-      'williamboman/mason-lspconfig.nvim',
+      'mason-org/mason-lspconfig.nvim',
       dependencies = {
         {
-          'williamboman/mason.nvim',
+          'mason-org/mason.nvim',
           opts = {}
-        },
-        'neovim/nvim-lspconfig'
+        }, {
+          'neovim/nvim-lspconfig',
+          version = '*'
+        }
       },
       opts = {
         ensure_installed = {
@@ -18,8 +20,10 @@ return {
           'gopls',
           'jsonls',
           'lua_ls',
+          'markdown_oxide',
           'pyright'
-        }
+        },
+        automatic_enable = true
       },
     },
     'hrsh7th/cmp-nvim-lsp',
@@ -31,7 +35,6 @@ return {
     local cmp = require('cmp')
 
     cmp.setup({
-      --snippet = {},
       window = {
         completion = cmp.config.window.bordered(),
         documentation = cmp.config.window.bordered(),
@@ -77,12 +80,6 @@ return {
     }
 
     -- Set up capabilities for LSP servers
-    require('mason-lspconfig').setup_handlers({
-      function(server_name)
-        require('lspconfig')[server_name].setup({
-          capabilities = capabilities
-        })
-      end
-    })
+    vim.lsp.config('*', { capabilities = capabilities })
   end
 }
