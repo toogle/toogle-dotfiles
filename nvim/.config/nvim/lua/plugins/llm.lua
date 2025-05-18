@@ -9,21 +9,19 @@ return {
     request_body = {
       temperature = 0.2,
       top_p = 0.95,
-      max_tokens = 40,
+      max_tokens = 40
     },
     fim = {
-      enabled = true,
       prefix = '<｜fim▁begin｜>',
       middle = '<｜fim▁end｜>',
       suffix = '<｜fim▁hole｜>',
     },
-    debounce_ms = 600,
     lsp = {
       bin_path = vim.fn.stdpath('data') .. '/mason/bin/llm-ls'
     },
     tokenizer = {
       repository = model_repo
     },
-    context_window = 768
+    context_window = 1024
   }
 }
