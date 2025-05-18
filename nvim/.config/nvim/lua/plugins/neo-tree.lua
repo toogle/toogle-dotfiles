@@ -14,11 +14,11 @@ return {
     filesystem = {
       filtered_items = {
         hide_by_name = {
-          'node_modules',
-          'venv',
-          '__pycache__'
+          '__pycache__',
+          'node_modules'
         },
         always_show = {
+          '.github',
           '.gitignore'
         },
         always_show_by_pattern = {
