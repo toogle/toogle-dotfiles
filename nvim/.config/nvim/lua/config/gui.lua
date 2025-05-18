@@ -4,7 +4,7 @@ local keymap = vim.keymap
 
 -- Neovide settings
 if g.neovide then
-  opt.guifont = 'DejaVuSansM Nerd Font Mono:h14'
+  opt.guifont = 'JetBrainsMono Nerd Font Mono:h14'
   opt.background = 'dark'
 
   -- Option Key is Meta
