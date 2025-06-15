@@ -23,7 +23,7 @@ if g.neovide then
   -- Clipboard
   keymap.set('x', '<D-c>', '"+y')
   keymap.set('x', '<D-x>', '"+x')
-  keymap.set({ 'n', 'v', 'i', 'c' }, '<D-v>', function()
+  keymap.set({ 'n', 'v', 'i', 'c', 't' }, '<D-v>', function()
     vim.api.nvim_paste(vim.fn.getreg('+'), false, -1)
   end)
 
