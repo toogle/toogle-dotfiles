@@ -8,9 +8,6 @@ return {
       theme = 'nord',
       disabled_filetypes = {
         statusline = {
-          'Avante',
-          'AvanteInput',
-          'AvanteSelectedFiles',
           'alpha',
           'neo-tree',
           'toggleterm',
