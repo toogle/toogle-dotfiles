@@ -21,7 +21,6 @@ opt.formatoptions:append('j')  -- remove a comment leader when joining lines
 
 -- Language settings
 opt.langmap = 'ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz'
-opt.spelllang = { 'en_us', 'ru_yo' }
 
 -- Misc
 opt.hidden = true       -- allow edit buffers to be hidden

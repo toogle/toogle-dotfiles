@@ -18,6 +18,7 @@ return {
           'docker_compose_language_service',
           'dockerls',
           'gopls',
+          'harper_ls',
           'jsonls',
           'lua_ls',
           'markdown_oxide',
