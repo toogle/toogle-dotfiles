@@ -22,7 +22,8 @@ return {
           'jsonls',
           'lua_ls',
           'markdown_oxide',
-          'pyright'
+          'pyright',
+          'rust_analyzer'
         },
         automatic_enable = true
       },
