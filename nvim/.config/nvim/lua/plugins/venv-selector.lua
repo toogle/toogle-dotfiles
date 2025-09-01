@@ -1,6 +1,5 @@
 return {
   'linux-cultist/venv-selector.nvim',
-  branch = 'regexp',
   event = 'VeryLazy',
   lazy = false,
   dependencies = {
