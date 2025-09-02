@@ -1,0 +1,1 @@
+set --global --export GOPATH "$XDG_CACHE_HOME/go"
