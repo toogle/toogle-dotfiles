@@ -1,0 +1,11 @@
+fish_variables
+
+completions/*
+functions/*
+themes/*
+
+conf.d/_*.fish
+conf.d/autopair.fish
+conf.d/done.fish
+conf.d/gitnow.fish
+conf.d/z.fish
