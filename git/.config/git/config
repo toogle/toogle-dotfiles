@@ -9,9 +9,6 @@ defaultBranch = main
 name  = toogle
 email = tooogle@mail.ru
 
-[credential]
-helper = osxkeychain
-
 [merge]
 tool = nvim -d
 
