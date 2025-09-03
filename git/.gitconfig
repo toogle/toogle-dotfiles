@@ -13,7 +13,7 @@ email = tooogle@mail.ru
 helper = osxkeychain
 
 [merge]
-tool = vimdiff
+tool = nvim -d
 
 [alias]
 st    = status
