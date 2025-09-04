@@ -14,16 +14,7 @@ return {
       },
       opts = {
         ensure_installed = {
-          'ansiblels',
-          'docker_compose_language_service',
-          'dockerls',
-          'gopls',
-          'harper_ls',
-          'jsonls',
-          'lua_ls',
-          'markdown_oxide',
-          'pyright',
-          'rust_analyzer'
+          'harper_ls'
         },
         automatic_enable = true
       },
