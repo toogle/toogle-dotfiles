@@ -1,34 +1,6 @@
 return {
   'hrsh7th/nvim-cmp',
   dependencies = {
-    {
-      'mason-org/mason-lspconfig.nvim',
-      dependencies = {
-        {
-          'mason-org/mason.nvim',
-          opts = {}
-        }, {
-          'neovim/nvim-lspconfig',
-          version = '*'
-        }
-      },
-      opts = {
-        ensure_installed = {
-          'ansiblels',
-          'docker_compose_language_service',
-          'dockerls',
-          'gopls',
-          'harper_ls',
-          'jsonls',
-          'lua_ls',
-          'markdown_oxide',
-          'pyright',
-          'rust_analyzer'
-        },
-        automatic_enable = true
-      },
-    },
-    'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-buffer',
     'hrsh7th/cmp-path',
     'hrsh7th/cmp-cmdline'
@@ -49,8 +21,6 @@ return {
         ['<CR>'] = cmp.mapping.confirm({ select = true })
       }),
       sources = cmp.config.sources({
-        { name = 'nvim_lsp' }
-      }, {
         { name = 'buffer' }
       })
     })
@@ -73,15 +43,5 @@ return {
       }),
       matching = { disallow_symbol_nonprefix_matching = false }
     })
-
-    -- Tell the server the capability of foldingRange for nvim-ufo
-    local capabilities = require('cmp_nvim_lsp').default_capabilities()
-    capabilities.textDocument.foldingRange = {
-      dynamicRegistration = false,
-      lineFoldingOnly = true
-    }
-
-    -- Set up capabilities for LSP servers
-    vim.lsp.config('*', { capabilities = capabilities })
   end
 }
