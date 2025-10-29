@@ -1,8 +1,5 @@
 local keymap = vim.keymap
 
--- Allow semicolon to act as colon
-keymap.set({ 'n', 'v' }, ';', ':')
-
 -- Easy window navigation
 keymap.set('n', '<C-h>', '<C-w>h')
 keymap.set('n', '<C-j>', '<C-w>j')
