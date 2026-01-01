@@ -1,0 +1,1 @@
+set --global --export CODEX_HOME "$XDG_CONFIG_HOME/codex"
