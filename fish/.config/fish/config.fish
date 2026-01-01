@@ -17,13 +17,6 @@ if status is-interactive
     abbr --add j jobs
     abbr --add h history
 
-    if command -q git
-        abbr --add gb git branch
-        abbr --add gc git commit
-        abbr --add gd git diff
-        abbr --add gs git stash
-    end
-
     # Add anywhere abbreviations
     abbr --add L --position anywhere --set-cursor "% | less"
     abbr --add H --position anywhere --set-cursor "% | head"
