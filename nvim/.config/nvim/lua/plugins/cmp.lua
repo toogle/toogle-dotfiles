@@ -23,7 +23,8 @@ return {
           'lua_ls',
           'markdown_oxide',
           'pyright',
-          'rust_analyzer'
+          'rust_analyzer',
+          'ts_ls'
         },
         automatic_enable = true
       },
