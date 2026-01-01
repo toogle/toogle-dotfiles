@@ -40,4 +40,21 @@ if status is-interactive
     function ssh-add-all --description "Adds all private key identities to the OpenSSH authentication agent"
         find ~/.ssh -type f \( -name "id_*" ! -name "id_*.pub" \) -exec ssh-add {} +
     end
+
+    # Function to look up IP information using ipinfo.io
+    function ipinfo
+        if test (count $argv) -ne 1
+            echo "Usage: ipinfo <IP address>" >&2
+            return 1
+        end
+
+        set -l ip $argv[1]
+
+        if not string match -rq '^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$' -- $ip
+            echo "Invalid IP: $ip" >&2
+            return 1
+        end
+
+        curl --fail --show-error --silent "https://ipinfo.io/$ip"
+    end
 end
